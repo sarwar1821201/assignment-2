@@ -32,5 +32,5 @@ const productSchema= new Schema <TProduct>({
 
 
 /// create model
- const Product=model<TProduct>("Product",productSchema)
+ export  const ProductModel=model<TProduct>("Product",productSchema)
  
