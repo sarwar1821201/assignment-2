@@ -55,9 +55,48 @@ const createProduct=async (req:Request,res:Response) => {
   
     }
 
+   /// update a product
+
+// const updateProduct=async(req:Request,res:Response)=>{
+
+//       try{
+//             const {productId}=req.params;
+//           // const productUpdate=req.body
+//            const result=await ProductServices.updateProductFromDB(productId);
+//            res.status(200).json({
+//               success:true,
+//               message:"  Products updated Successfully",
+//               data:result
+//           })
+//       } catch(err){
+//         console.log(err)
+//       }
+  
+//     }
+
+
+  // delete product
+  const deleteSingleProduct=async(req:Request,res:Response)=>{
+
+   try{
+         const {productId}=req.params;
+        const result=await ProductServices.deleteSingleProductFromDB(productId);
+        res.status(200).json({
+           success:true,
+           message:"  Products deleted Successfully",
+           data:result
+       })
+   } catch(err){
+     console.log(err)
+   }
+
+ }
+
 /// 
   export const ProductControllers={
      createProduct,
      getAllProducts,
-     getSingleProduct
+     getSingleProduct,
+    // updateProduct,
+    deleteSingleProduct
   }
