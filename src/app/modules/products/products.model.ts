@@ -25,7 +25,7 @@ const productSchema= new Schema <TProduct>({
     description:{type:String},
     price:{type:Number,required:true},
     category:{type:String,required:true},
-    tags:[{type:String}],
+    tags:{type:[String]},
     variants:{type:[variantsSchema]},
     inventory:inventorySchema
 })
