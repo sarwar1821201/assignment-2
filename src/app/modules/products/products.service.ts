@@ -13,7 +13,15 @@ const createProductIntoDB=async(product:TProduct)=>{
    return result;
  }
 
+
+ const getSingleProductFromDB=async(_id:string)=>{
+    const result=await ProductModel.findById({_id})
+    return result
+ }
+  
+
  export const ProductServices={
     createProductIntoDB,
     getAllProductsFromDB,
+    getSingleProductFromDB
  }
