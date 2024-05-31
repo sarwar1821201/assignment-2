@@ -1,5 +1,7 @@
 import { Request, Response } from "express";
 import { ProductServices } from "./products.service";
+import mongoose, { Mongoose, Types } from "mongoose";
+import { ObjectId } from "mongodb";
 
 
 const createProduct=async (req:Request,res:Response) => {
@@ -25,12 +27,25 @@ const createProduct=async (req:Request,res:Response) => {
   const getAllProducts=async(req:Request,res:Response)=>{
 
     try{
-         const result=await ProductServices.getAllProductsFromDB();
+          const searchTerm=req.query.searchTerm as string ;
+          if(!searchTerm){
+            const result=await ProductServices.getAllProductsFromDB(searchTerm );
          res.status(200).json({
             success:true,
             message:"Products fetched Successfully",
             data:result
         })
+      }
+
+      else{
+        const result=await ProductServices.getAllProductsFromDB(searchTerm);
+         res.status(200).json({
+            success:true,
+            message:"Products fetched Successfully",
+            data:result
+        })
+      }
+         
     } catch(err){
       console.log(err)
     }
@@ -59,20 +74,25 @@ const createProduct=async (req:Request,res:Response) => {
 
 const updateProduct=async(req:Request,res:Response)=>{
 
-      try{
-            const {productId}=req.params;
-           const productUpdate=req.body
-           const result=await ProductServices.updateProductFromDB(productId,productUpdate);
-           res.status(200).json({
-              success:true,
-              message:"  Products updated Successfully",
-              data:result
-          })
-      } catch(err){
+       try{
+        let id  = new mongoose.Types.ObjectId(req.params.productId.trim()) as unknown;
+        const productData= req.body;
+
+        const result= await ProductServices.updateProductFromDB(id,productData);
+        res.status(200).json({
+          success:true,
+          message:"  Products updated Successfully",
+          data:result
+      })
+       } catch(err){
         console.log(err)
-      }
-  
-    }
+       }
+
+         
+}
+
+
+    
 
 
   // delete product
@@ -92,11 +112,36 @@ const updateProduct=async(req:Request,res:Response)=>{
 
  }
 
+
+ /// 
+
+//  const searchProducts=async(req:Request,res:Response)=>{
+
+//   try{
+//         const searchTerm=req.query.searchTerm;
+       
+//        const result=await ProductServices.searchProduct(searchTerm as string );
+//        res.status(200).json({
+//           success:true,
+//           message:"  Products find Successfully",
+//           data:result
+//       })
+//   } catch(err){
+//     console.log(err)
+//   }
+
+// }
+
+
+
+
+
 /// 
   export const ProductControllers={
      createProduct,
      getAllProducts,
      getSingleProduct,
      updateProduct,
-    deleteSingleProduct
+    deleteSingleProduct,
+  //searchProducts
   }

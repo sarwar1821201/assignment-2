@@ -11,7 +11,7 @@ app.use(cors())
 
 // application routes
 
-app.use('/api/v1/products', ProductsRoutes )
+app.use('/api/products', ProductsRoutes )
 
 const getAController=(req:Request, res:Response) => {
   const a=30;
