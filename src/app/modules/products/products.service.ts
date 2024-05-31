@@ -19,12 +19,13 @@ const createProductIntoDB=async(product:TProduct)=>{
     return result
  }
 
-//  const updateProductFromDB=async(_id:string)=>{
-// const result=await ProductModel.findByIdAndUpdate({_id},{
-   
-// })
-//    return result;
-//  }
+ const updateProductFromDB=async(_id:string, product:TProduct )=>{
+const result=await ProductModel.findByIdAndUpdate({_id},{
+    $set:{...product}},
+    {new:true}
+   )
+   return result;
+ }
 
   const deleteSingleProductFromDB=async(_id:string)=>{
    const result=await ProductModel.deleteOne({_id})
@@ -36,6 +37,6 @@ const createProductIntoDB=async(product:TProduct)=>{
     createProductIntoDB,
     getAllProductsFromDB,
     getSingleProductFromDB,
-//updateProductFromDB,
+    updateProductFromDB,
     deleteSingleProductFromDB
  }

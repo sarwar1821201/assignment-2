@@ -57,22 +57,22 @@ const createProduct=async (req:Request,res:Response) => {
 
    /// update a product
 
-// const updateProduct=async(req:Request,res:Response)=>{
+const updateProduct=async(req:Request,res:Response)=>{
 
-//       try{
-//             const {productId}=req.params;
-//           // const productUpdate=req.body
-//            const result=await ProductServices.updateProductFromDB(productId);
-//            res.status(200).json({
-//               success:true,
-//               message:"  Products updated Successfully",
-//               data:result
-//           })
-//       } catch(err){
-//         console.log(err)
-//       }
+      try{
+            const {productId}=req.params;
+           const productUpdate=req.body
+           const result=await ProductServices.updateProductFromDB(productId,productUpdate);
+           res.status(200).json({
+              success:true,
+              message:"  Products updated Successfully",
+              data:result
+          })
+      } catch(err){
+        console.log(err)
+      }
   
-//     }
+    }
 
 
   // delete product
@@ -97,6 +97,6 @@ const createProduct=async (req:Request,res:Response) => {
      createProduct,
      getAllProducts,
      getSingleProduct,
-    // updateProduct,
+     updateProduct,
     deleteSingleProduct
   }
