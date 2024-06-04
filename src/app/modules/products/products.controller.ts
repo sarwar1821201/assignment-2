@@ -41,7 +41,7 @@ const createProduct=async (req:Request,res:Response) => {
         const result=await ProductServices.getAllProductsFromDB(searchTerm);
          res.status(200).json({
             success:true,
-            message:"Products fetched Successfully",
+            message:`Products matching search term ${searchTerm} fetched successfully!`,
             data:result
         })
       }

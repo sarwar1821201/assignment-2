@@ -20,6 +20,51 @@ const createOrder=async (req:Request,res:Response) => {
  }
 
 
+  /// get all order
+
+  const getAllOrders=async(req:Request,res:Response)=>{
+
+    try{
+        const email=req.query.email as string ;
+        if(!email){
+          const result=await OrderServices.getAllOrdersFromDB(email );
+       res.status(200).json({
+          success:true,
+          message:"Products fetched Successfully",
+          data:result
+      })
+    }
+
+    else{
+      const result=await OrderServices.getAllOrdersFromDB(email);
+       res.status(200).json({
+          success:true,
+          message:`Products matching search term ${email} fetched successfully!`,
+          data:result
+      })
+    }
+       
+  } catch(err){
+    console.log(err)
+  }
+
+
+    // try{
+    //      const result=await OrderServices.getAllOrdersFromDB();
+    //      res.status(200).json({
+    //         success:true,
+    //         message:"Orders fetched Successfully",
+    //         data:result
+    //     })
+    // } catch(err){
+    //   console.log(err)
+    // }
+
+  }
+
+
+
  export const OrderControllers={
-    createOrder
+    createOrder,
+    getAllOrders
  }
