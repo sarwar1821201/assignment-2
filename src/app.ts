@@ -13,6 +13,7 @@ app.use(cors())
 
 app.use('/api/products', ProductsRoutes )
 
+
 const getAController=(req:Request, res:Response) => {
   const a=30;
  res.send(a);
