@@ -14,7 +14,7 @@ app.use(cors())
 
 app.use('/api/products', ProductsRoutes )
 
-//app.use('/api/orders',OrdersRoutes)
+app.use('/api/orders',OrdersRoutes)
 
 const getAController=(req:Request, res:Response) => {
   const a=30;
