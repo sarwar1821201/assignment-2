@@ -1,6 +1,7 @@
 import express, { Application, Request, Response } from 'express'
 import cors from 'cors'
 import { ProductsRoutes } from './app/modules/products/products.routes'
+import { OrdersRoutes } from './app/modules/orders/orders.routes'
 const app:Application = express()
 const port = 3000
 
@@ -13,6 +14,7 @@ app.use(cors())
 
 app.use('/api/products', ProductsRoutes )
 
+//app.use('/api/orders',OrdersRoutes)
 
 const getAController=(req:Request, res:Response) => {
   const a=30;
