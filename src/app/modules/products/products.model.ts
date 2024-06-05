@@ -1,3 +1,4 @@
+
 import { TInventory, TProduct, TVariants } from './products.interface';
 import { Schema, model, connect } from 'mongoose';
 
@@ -21,10 +22,10 @@ import { Schema, model, connect } from 'mongoose';
 
  
 const productSchema= new Schema <TProduct>({
-    name:{type:String,required:true},
+    name:{type:String},
     description:{type:String},
-    price:{type:Number,required:true},
-    category:{type:String,required:true},
+    price:{type:Number},
+    category:{type:String},
     tags:{type:[String]},
     variants:{type:[variantsSchema]},
     inventory:inventorySchema
@@ -33,4 +34,7 @@ const productSchema= new Schema <TProduct>({
 
 /// create model
  export  const ProductModel=model<TProduct>("Product",productSchema)
+
+
+
  

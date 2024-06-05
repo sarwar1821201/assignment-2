@@ -1,15 +1,15 @@
 import { Request, Response } from "express";
 import { ProductServices } from "./products.service";
-import mongoose, { Mongoose, Types } from "mongoose";
-import { ObjectId } from "mongodb";
+import mongoose from "mongoose";
+
 
 
 const createProduct=async (req:Request,res:Response) => {
 
    try{
-    const {product:productData}=req.body;
+    const product=req.body;
     // will call to the service function
-     const result= await ProductServices.createProductIntoDB(productData)
+     const result= await ProductServices.createProductIntoDB(product)
  
     /// send response
      res.status(200).json({
@@ -75,7 +75,7 @@ const createProduct=async (req:Request,res:Response) => {
 const updateProduct=async(req:Request,res:Response)=>{
 
        try{
-        let id  = new mongoose.Types.ObjectId(req.params.productId.trim()) as unknown;
+        const id  = new mongoose.Types.ObjectId(req.params.productId.trim()) as unknown;
         const productData= req.body;
 
         const result= await ProductServices.updateProductFromDB(id,productData);

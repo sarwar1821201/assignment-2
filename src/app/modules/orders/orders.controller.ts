@@ -4,9 +4,9 @@ import { OrderServices } from "./orders.service";
 const createOrder=async (req:Request,res:Response) => {
 
     try{
-     const {order:orderData}=req.body;
+     const order=req.body;
      // will call to the service function
-      const result= await OrderServices.createOrderIntoDb(orderData)
+      const result= await OrderServices.createOrderIntoDb(order)
   
      /// send response
       res.status(200).json({

@@ -1,4 +1,4 @@
-import { AnyObject } from "mongoose";
+
 import { TProduct } from "./products.interface";
 import { ProductModel } from "./products.model";
 
