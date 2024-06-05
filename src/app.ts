@@ -17,9 +17,9 @@ app.use('/api/products', ProductsRoutes )
 app.use('/api/orders',OrdersRoutes)
 
 const getAController=(req:Request, res:Response) => {
-  const a=30;
- res.send(a);
-
+  res.status(200).json({
+    message:"hello"
+  })
 }
 
 app.get('/', getAController)
