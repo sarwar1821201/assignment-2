@@ -18,7 +18,12 @@ const createProduct=async (req:Request,res:Response) => {
          data:result
      })
    } catch(err){
-    console.log(err)
+    // console.log(err)
+       res.status(500).json({
+         success:false,
+         message:"something went wrong",
+         error:err
+     })
    }
 }
 
@@ -47,7 +52,12 @@ const createProduct=async (req:Request,res:Response) => {
       }
          
     } catch(err){
-      console.log(err)
+      // console.log(err)
+      res.status(500).json({
+         success:false,
+         message:"something went wrong",
+         error:err
+     })
     }
 
   }
@@ -65,7 +75,12 @@ const createProduct=async (req:Request,res:Response) => {
               data:result
           })
       } catch(err){
-        console.log(err)
+        // console.log(err)
+        res.status(500).json({
+         success:false,
+         message:"something went wrong",
+         error:err
+     })
       }
   
     }
@@ -85,7 +100,12 @@ const updateProduct=async(req:Request,res:Response)=>{
           data:result
       })
        } catch(err){
-        console.log(err)
+        // console.log(err)
+        res.status(500).json({
+          success:false,
+          message:"something went wrong",
+          error:err
+      })
        }
 
          
@@ -107,7 +127,12 @@ const updateProduct=async(req:Request,res:Response)=>{
            data:result
        })
    } catch(err){
-     console.log(err)
+    //  console.log(err)
+    res.status(500).json({
+      success:false,
+      message:"something went wrong",
+      error:err
+  })
    }
 
  }
